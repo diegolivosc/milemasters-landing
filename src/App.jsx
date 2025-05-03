@@ -20,7 +20,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="bg-black text-white min-h-screen font-sans scroll-smooth relative overflow-x-hidden">
+    <main className="bg-black text-white min-h-screen font-sans scroll-smooth relative w-full overflow-hidden">
       <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
         rel="stylesheet"
@@ -28,8 +28,8 @@ export default function App() {
 
       {/* Header */}
       <header className="fixed top-0 left-0 w-full bg-black z-50 border-b border-neutral-800 text-sm backdrop-blur-sm">
-        <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <span className="tracking-wider font-medium uppercase text-sm">Mile Masters</span>
+        <nav className="w-full max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
+          <span className="tracking-wider font-medium uppercase text-sm">MILE MASTERS</span>
           <ul className="flex space-x-4 md:space-x-8 text-sm">
             <li><a href="#benefits" className="hover:text-[#E43F7B] transition-opacity">Beneficios</a></li>
             <li><a href="#community" className="hover:text-[#E43F7B] transition-opacity">Comunidad</a></li>
@@ -39,7 +39,7 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section className="relative w-screen h-screen flex items-center justify-center text-center overflow-hidden">
+      <section className="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-10 bg-black bg-opacity-50 flex flex-col justify-center items-center px-4">
           <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight" data-aos="fade-up">Mile Masters Club</h1>
           <p className="text-lg md:text-2xl text-[#E43F7B] uppercase tracking-widest mb-4" data-aos="fade-up" data-aos-delay="150">Pursuit your limits</p>
@@ -52,8 +52,8 @@ export default function App() {
             Únete ahora
           </a>
         </div>
-        <div ref={sliderRef} className="keen-slider w-screen h-screen absolute top-0 left-0 z-0">
-          <div className="keen-slider__slide number-slide1 w-screen h-screen">
+        <div ref={sliderRef} className="keen-slider w-full h-full absolute top-0 left-0 z-0">
+          <div className="keen-slider__slide number-slide1 w-full h-full">
             <img
               src="/hero-1.jpg"
               alt="Corredores en movimiento"
@@ -64,9 +64,11 @@ export default function App() {
       </section>
 
       {/* Beneficios */}
-      <section id="benefits" className="relative max-w-6xl mx-auto px-6 py-32">
-        <div className="absolute -top-24 -left-24 w-60 h-60 bg-[#E43F7B] opacity-20 rounded-full blur-3xl pointer-events-none z-0" />
-        <div className="absolute -bottom-32 right-0 w-80 h-80 bg-[#E43F7B] opacity-20 rotate-45 blur-[100px] pointer-events-none z-0" />
+      <section id="benefits" className="relative w-full px-6 py-32 overflow-visible">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <div className="absolute -top-24 -left-24 w-60 h-60 bg-[#E43F7B] opacity-20 rounded-full blur-3xl pointer-events-none z-0" />
+          <div className="absolute -bottom-32 right-0 w-80 h-80 bg-[#E43F7B] opacity-20 rotate-45 blur-[100px] pointer-events-none z-0" />
+        </div>
 
         <h2
           className="text-4xl md:text-6xl font-bold text-center mb-20 uppercase tracking-tight text-[#E43F7B] relative z-10"
@@ -99,7 +101,7 @@ export default function App() {
       {/* Comunidad */}
       <section
         id="community"
-        className="relative w-full h-[80vh] flex items-center justify-center text-center"
+        className="relative w-full h-[80vh] flex items-center justify-center text-center overflow-hidden"
       >
         <img
           src="/hero-2.jpg"
@@ -116,7 +118,7 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="relative z-[999] text-neutral-400 border-t border-neutral-800 bg-black py-16" data-aos="fade-up">
+      <footer id="contact" className="relative z-[999] text-neutral-400 border-t border-neutral-800 bg-black py-16 w-full" data-aos="fade-up">
         <div className="flex justify-center gap-10 items-center mb-6">
           <a
             href="https://instagram.com/milemastersclub"
@@ -146,9 +148,9 @@ export default function App() {
             <FaWhatsapp className="text-[#E43F7B] text-2xl" />
           </a>
         </div>
-        <p className="text-xs text-neutral-500 tracking-wide text-center" data-aos="fade-up" data-aos-delay="200">
-          © {new Date().getFullYear()} Mile Masters. Todos los derechos reservados.
-        </p>
+        <div className="text-xs text-neutral-500 tracking-wide text-center mt-4">
+          <p className="block">© <span className="inline-block">2025</span> Mile Masters. Todos los derechos reservados.</p>
+        </div>
       </footer>
     </main>
   );
