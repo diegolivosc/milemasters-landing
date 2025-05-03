@@ -27,10 +27,10 @@ export default function App() {
       />
 
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full bg-black z-50 border-b border-neutral-800 text-sm">
-        <nav className="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
-          <span className="tracking-wider font-medium uppercase">Mile Masters</span>
-          <ul className="flex space-x-8">
+      <header className="fixed top-0 left-0 w-full bg-black z-50 border-b border-neutral-800 text-sm backdrop-blur-sm">
+        <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <span className="tracking-wider font-medium uppercase text-sm">Mile Masters</span>
+          <ul className="flex space-x-4 md:space-x-8 text-sm">
             <li><a href="#benefits" className="hover:text-[#E43F7B] transition-opacity">Beneficios</a></li>
             <li><a href="#community" className="hover:text-[#E43F7B] transition-opacity">Comunidad</a></li>
             <li><a href="#contact" className="hover:text-[#E43F7B] transition-opacity">Instagram</a></li>
@@ -39,10 +39,10 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section className="relative w-full h-screen flex items-center justify-center text-center px-4">
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-10 flex flex-col justify-center items-center">
-          <h1 className="text-6xl md:text-7xl font-semibold mb-6 tracking-tight" data-aos="fade-up">Mile Masters Club</h1>
-          <p className="text-xl md:text-2xl text-[#E43F7B] uppercase tracking-widest mb-4" data-aos="fade-up" data-aos-delay="150">pursuit your limits</p>
+      <section className="relative w-screen h-screen flex items-center justify-center text-center overflow-hidden">
+        <div className="absolute inset-0 z-10 bg-black bg-opacity-50 flex flex-col justify-center items-center px-4">
+          <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight" data-aos="fade-up">Mile Masters Club</h1>
+          <p className="text-lg md:text-2xl text-[#E43F7B] uppercase tracking-widest mb-4" data-aos="fade-up" data-aos-delay="150">Pursuit your limits</p>
           <a
             href="#benefits"
             className="border border-[#E43F7B] text-[#E43F7B] px-8 py-2 rounded-full hover:bg-[#E43F7B] hover:text-black transition transform hover:scale-105 hover:animate-pulse"
@@ -52,12 +52,12 @@ export default function App() {
             Únete ahora
           </a>
         </div>
-        <div ref={sliderRef} className="keen-slider w-full h-full">
-          <div className="keen-slider__slide number-slide1">
+        <div ref={sliderRef} className="keen-slider w-screen h-screen absolute top-0 left-0 z-0">
+          <div className="keen-slider__slide number-slide1 w-screen h-screen">
             <img
               src="/hero-1.jpg"
               alt="Corredores en movimiento"
-              className="w-full h-full object-cover"
+              className="w-screen h-screen object-cover"
             />
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function App() {
         <div className="absolute -bottom-32 right-0 w-80 h-80 bg-[#E43F7B] opacity-20 rotate-45 blur-[100px] pointer-events-none z-0" />
 
         <h2
-          className="text-5xl md:text-6xl font-bold text-center mb-20 uppercase tracking-tight text-[#E43F7B] relative z-10"
+          className="text-4xl md:text-6xl font-bold text-center mb-20 uppercase tracking-tight text-[#E43F7B] relative z-10"
           style={{ textShadow: '0 0 12px rgba(228, 63, 123, 0.7)' }}
           data-aos="fade-up"
         >
