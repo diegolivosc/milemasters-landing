@@ -20,7 +20,7 @@ export default function App() {
   }, []);
 
   return (
-    <main className="bg-black text-white min-h-screen font-sans scroll-smooth relative">
+    <main className="bg-black text-white min-h-screen font-sans scroll-smooth relative overflow-x-hidden">
       <link
         href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
         rel="stylesheet"
@@ -57,7 +57,7 @@ export default function App() {
             <img
               src="/hero-1.jpg"
               alt="Corredores en movimiento"
-              className="w-screen h-screen object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
