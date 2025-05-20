@@ -86,17 +86,17 @@ export default function App() {
             {
               title: '10K Bogotá',
               date: '1 Junio 2025',
-              image: '/3.jpg',
+              image: '/proximamente.png',
             },
             {
               title: 'Entreno Alto Rendimiento',
               date: '8 Junio 2025',
-              image: '/3.jpg',
+              image: '/proximamente.png',
             },
             {
               title: 'Carrera Nocturna',
               date: '15 Junio 2025',
-              image: '/3.jpg',
+              image: '/proximamente.png',
             },
           ].map((event, index) => (
             <div key={index} className="text-center">
