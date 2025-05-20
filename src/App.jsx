@@ -12,6 +12,20 @@ export default function App() {
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
   }, []);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.mercadopago.com.co/integrations/v1/web-payment-checkout.js';
+    script.setAttribute('data-preference-id', '606748986-9e87cde5-d165-4ac1-b6a8-9a98e25d210f');
+    script.setAttribute('data-source', 'button');
+    script.setAttribute('type', 'text/javascript');
+
+    const container = document.getElementById('mercado_pago_button_0');
+    if (container) {
+      container.innerHTML = '';
+      container.appendChild(script);
+    }
+  }, []);
+
   return (
     <main className="bg-black text-white min-h-screen font-sans scroll-smooth relative w-full overflow-hidden">
       <link
@@ -56,27 +70,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Tienda (comentada) */}
-      {/*
-      <section className="bg-white text-black px-6 pt-20 pb-12" id="store">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {[
-            { name: '247 Manchester Hoodie', price: '$175', color: 'Black', image: '/247imagen.png' },
-            { name: '247 London Hoodie', price: '$175', color: 'Black', image: '/247imagen.png' },
-            { name: '247 Manchester T-Shirt', price: '$110', color: 'Black', image: '/247imagen.png' },
-            { name: '247 London T-Shirt', price: '$110', color: 'Blue', image: '/247imagen.png' },
-          ].map((product, index) => (
-            <div key={index} className="text-center">
-              <img src={product.image} alt={product.name} className="w-full h-auto object-cover mb-4" />
-              <h3 className="font-semibold text-lg">{product.name}</h3>
-              <p className="text-sm text-gray-600">{product.color}</p>
-              <p className="text-md font-bold mt-2">{product.price}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      */}
-
       {/* Eventos */}
       <section className="bg-white text-black px-6 pt-4 pb-20" id="events">
         <h2 className="text-4xl font-semibold text-center mb-12 tracking-tight text-[#E43F7B] font-[Outfit]" data-aos="fade-up">
@@ -84,15 +77,35 @@ export default function App() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { title: 'Carrera Montaña', date: '25 Mayo 2025', image: '/hielo.png' },
-            { title: '10K Bogotá', date: '2 Junio 2025', image: '/hielo.png' },
-            { title: 'Entreno Alto Rendimiento', date: '9 Junio 2025', image: '/hielo.png' },
-            { title: 'Carrera Nocturna', date: '16 Junio 2025', image: '/hielo.png' },
+            {
+              title: 'Sunday Boxing Run',
+              date: '25 Mayo 2025',
+              image: '/Boxing.jpeg',
+              withPayment: true,
+            },
+            {
+              title: '10K Bogotá',
+              date: '1 Junio 2025',
+              image: '/3.jpg',
+            },
+            {
+              title: 'Entreno Alto Rendimiento',
+              date: '8 Junio 2025',
+              image: '/3.jpg',
+            },
+            {
+              title: 'Carrera Nocturna',
+              date: '15 Junio 2025',
+              image: '/3.jpg',
+            },
           ].map((event, index) => (
             <div key={index} className="text-center">
               <img src={event.image} alt={event.title} className="w-full h-60 object-cover mb-4 rounded-lg" />
               <h3 className="font-semibold text-lg mb-1">{event.title}</h3>
-              <p className="text-sm text-neutral-600">{event.date}</p>
+              <p className="text-sm text-neutral-600 mb-4">{event.date}</p>
+              {event.withPayment && (
+                <div id={`mercado_pago_button_${index}`} />
+              )}
             </div>
           ))}
         </div>
@@ -105,14 +118,14 @@ export default function App() {
           <div className="absolute -bottom-32 right-0 w-80 h-80 bg-[#E43F7B] opacity-20 rotate-45 blur-[100px] pointer-events-none z-0" />
         </div>
         <h2 className="text-4xl md:text-6xl font-bold text-center mb-20 uppercase tracking-tight text-[#E43F7B] relative z-10" style={{ textShadow: '0 0 12px rgba(228, 63, 123, 0.7)' }} data-aos="fade-up">
-          ¿Por qué correr con nosotros?
+          ¿Por qué entrenar con nosotros?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
           {[
             { title: 'Entrenamientos guiados', desc: 'Corre con estructura, mejora tu rendimiento.' },
             { title: 'Comunidad motivadora', desc: 'Gente que te empuja, te reta y te aplaude.' },
             { title: 'Eventos y competencias', desc: 'Desde carreras internas hasta retos públicos.' },
-            { title: 'Totalmente gratis', desc: 'Una experiencia premium sin costo.' },
+            { title: 'Experiencia', desc: 'Una experiencia premium y a otro nivel.' },
           ].map((item, index) => (
             <div key={index} data-aos="fade-up" data-aos-delay={index * 100} className="bg-[#111] border border-neutral-800 rounded-xl p-6 hover:border-[#E43F7B] transition">
               <h3 className="text-white font-semibold mb-2">{item.title}</h3>
@@ -126,7 +139,7 @@ export default function App() {
       <section id="community" className="relative w-full h-[80vh] flex items-center justify-center text-center overflow-hidden">
         <img src="/hero-2.jpg" alt="Corredor urbano" className="absolute inset-0 w-full h-full object-cover opacity-60" />
         <div className="relative z-10 px-4 max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-medium mb-4" data-aos="fade-up">Corre con propósito</h2>
+          <h2 className="text-4xl md:text-5xl font-medium mb-4" data-aos="fade-up">Entrena con propósito</h2>
           <p className="text-lg text-neutral-300" data-aos="fade-up" data-aos-delay="150">
             Construimos comunidad paso a paso,<br />
             cada domingo a las 8:30 a.m.
