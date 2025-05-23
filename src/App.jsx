@@ -12,7 +12,9 @@ export default function App() {
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
   }, []);
 
+  // Desactivado temporalmente el botón de pago de MercadoPago
   useEffect(() => {
+    /*
     const script = document.createElement('script');
     script.src = 'https://www.mercadopago.com.co/integrations/v1/web-payment-checkout.js';
     script.setAttribute('data-preference-id', '606748986-9e87cde5-d165-4ac1-b6a8-9a98e25d210f');
@@ -24,6 +26,7 @@ export default function App() {
       container.innerHTML = '';
       container.appendChild(script);
     }
+    */
   }, []);
 
   return (
@@ -104,7 +107,7 @@ export default function App() {
               <h3 className="font-semibold text-lg mb-1">{event.title}</h3>
               <p className="text-sm text-neutral-600 mb-4">{event.date}</p>
               {event.withPayment && (
-                <div id={`mercado_pago_button_${index}`} />
+                <div id={`mercado_pago_button_${index}`} className="hidden" />
               )}
             </div>
           ))}
