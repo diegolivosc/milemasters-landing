@@ -83,7 +83,7 @@ export default function App() {
             {
               title: 'Sunday Boxing Run',
               date: '25 Mayo 2025',
-              image: '/Boxing.jpeg',
+              image: '/soldout.jpeg',
               withPayment: true,
             },
             {
