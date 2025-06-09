@@ -12,7 +12,7 @@ export default function App() {
     AOS.init({ duration: 1000, once: true, easing: 'ease-out' });
   }, []);
 
-  // Desactivado temporalmente el botón de pago de MercadoPago
+  // Desactivado temporalmente el botón de pago de MercadoPago (PARA EVENTOS)
   useEffect(() => {
     /*
     const script = document.createElement('script');
@@ -23,11 +23,28 @@ export default function App() {
 
     const container = document.getElementById('mercado_pago_button_0');
     if (container) {
-      container.innerHTML = '';
+      container.innerHTML = ''; // Limpiar el contenedor antes de añadir
       container.appendChild(script);
     }
     */
   }, []);
+
+  const merchandiseItems = [
+    {
+      title: 'Mile Masters Everyday Training',
+      discountedPrice: '$80.000', // Ahora es el precio único
+      image: '/producto.png', // Reemplaza con la ruta de tu imagen
+      colors: 'Black',
+      // inStock ya no es necesario
+    },
+    {
+      title: 'Mile Masters Everyday Training',
+      discountedPrice: '$80.000',
+      image: '/producto2.png', // Reemplaza con la ruta de tu imagen
+      colors: 'Fuzzy Pink',
+      // inStock ya no es necesario
+    },
+  ];
 
   return (
     <main className="bg-black text-white min-h-screen font-sans scroll-smooth relative w-full overflow-hidden">
@@ -47,6 +64,7 @@ export default function App() {
           <ul className="flex space-x-4 md:space-x-8 text-sm">
             <li><a href="#benefits" className="hover:text-[#E43F7B] transition-opacity">Beneficios</a></li>
             <li><a href="#community" className="hover:text-[#E43F7B] transition-opacity">Comunidad</a></li>
+            <li><a href="#merchandising" className="hover:text-[#E43F7B] transition-opacity">Merchandising</a></li> {/* Nuevo enlace */}
             <li><a href="#contact" className="hover:text-[#E43F7B] transition-opacity">Instagram</a></li>
           </ul>
         </nav>
@@ -56,9 +74,11 @@ export default function App() {
       <section className="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 z-10 bg-black bg-opacity-50 flex flex-col justify-center items-center px-4">
           <h1 className="text-5xl md:text-7xl font-semibold mb-6 tracking-tight" data-aos="fade-up">Mile Masters Club</h1>
-          <p className="text-lg md:text-2xl text-[#E43F7B] uppercase tracking-widest mb-4" data-aos="fade-up" data-aos-delay="150">Pursuit your limits</p>
+          <p className="text-lg md:text-2xl text-[#E43F7B] uppercase tracking-widest mb-4" data-aos="fade-up" data-aos-delay="150">Embrace your potential</p>
           <a
-            href="#benefits"
+            href="https://www.instagram.com/milemastersclub" // <-- ENLACE MODIFICADO
+            target="_blank" // <-- PARA ABRIR EN NUEVA PESTAÑA
+            rel="noopener noreferrer" // <-- BUENA PRÁCTICA DE SEGURIDAD
             className="border border-[#E43F7B] text-[#E43F7B] px-8 py-2 rounded-full hover:bg-[#E43F7B] hover:text-black transition transform hover:scale-105 hover:animate-pulse"
             data-aos="fade-up"
             data-aos-delay="300"
@@ -70,6 +90,28 @@ export default function App() {
           <div className="keen-slider__slide number-slide1 w-full h-full">
             <img src="/hero-1.jpg" alt="Corredores en movimiento" className="w-full h-full object-cover" />
           </div>
+        </div>
+      </section>
+
+      {/* Merchandising */}
+      <section className="bg-white text-black px-6 pt-20 pb-20" id="merchandising">
+        <h2 className="text-4xl font-semibold text-center mb-12 tracking-tight text-[#E43F7B] font-[Outfit]" data-aos="fade-up">
+          Merchandising Oficial
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center max-w-xl mx-auto">
+          {merchandiseItems.map((item, index) => (
+            <div key={index} className="flex flex-col text-left group w-full max-w-[280px]" data-aos="fade-up" data-aos-delay={index * 100}>
+              <div className="relative w-full aspect-[3/4] overflow-hidden mb-4 rounded-lg bg-neutral-100">
+                {/* LÍNEA CORREGIDA: item.image en lugar de ruta fija */}
+                <img src={item.image} alt={item.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+              </div>
+              <h3 className="font-semibold text-lg mb-1 leading-tight">{item.title}</h3>
+              <p className="text-sm text-neutral-600 mb-2">{item.colors}</p>
+              <div className="flex items-baseline">
+                <span className="text-black font-bold text-base">{item.discountedPrice}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -87,27 +129,38 @@ export default function App() {
               withPayment: true,
             },
             {
-              title: '10K Bogotá',
-              date: '1 Junio 2025',
-              image: '/proximamente.png',
-            },
-            {
-              title: 'Entreno Alto Rendimiento',
-              date: '8 Junio 2025',
-              image: '/proximamente.png',
-            },
-            {
-              title: 'Carrera Nocturna',
+              title: 'Run + Coffee Party',
               date: '15 Junio 2025',
+              image: '/Coffee.jpg',
+              link: 'https://cubitt.com.co/pages/cubitt-coffee-party', // <-- ENLACE AÑADIDO
+            },
+            {
+              title: 'Running with Purpose',
+              date: '22 Junio 2025',
+              image: '/Purpose.jpg',
+            },
+            {
+              title: 'Hyrox',
+              date: 'Soon...',
               image: '/proximamente.png',
             },
           ].map((event, index) => (
             <div key={index} className="text-center">
               <img src={event.image} alt={event.title} className="w-full h-60 object-cover mb-4 rounded-lg" />
               <h3 className="font-semibold text-lg mb-1">{event.title}</h3>
-              <p className="text-sm text-neutral-600 mb-4">{event.date}</p>
+              <p className="text-sm text-neutral-600 mb-2">{event.date}</p> {/* <-- MARGEN AJUSTADO */}
               {event.withPayment && (
                 <div id={`mercado_pago_button_${index}`} className="hidden" />
+              )}
+              {event.link && (
+                <a
+                  href={event.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 border border-[#E43F7B] text-[#E43F7B] px-6 py-2 rounded-full hover:bg-[#E43F7B] hover:text-black transition transform hover:scale-105" // <-- MARGEN AJUSTADO
+                >
+                  Inscríbete
+                </a>
               )}
             </div>
           ))}
